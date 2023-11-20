@@ -1,0 +1,69 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_a22c5e88dfad
+          env:
+            - name: TZ
+              value: Asia/Seoul
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: database-url
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: database-username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: database-password
+            - name: ADMIN_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: adminKey
+            - name: MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: mail-username
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: mail-password
+            - name: COS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: cos-key
+          resources:
+            requests:
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 8080
+      targetPort: 8080
