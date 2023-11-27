@@ -25,7 +25,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: secret
-                  key: react-api-url-kakaomap
+                  key: react-api-kakaomap
 ---
 apiVersion: v1
 kind: Service
