@@ -21,6 +21,11 @@ spec:
                 secretKeyRef:
                   name: secret
                   key: react-api-url
+            - name: REACT_APP_KAKAO_MAPS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: react-api-url-kakaomap
 ---
 apiVersion: v1
 kind: Service
