@@ -21,11 +21,11 @@ spec:
                 secretKeyRef:
                   name: secret
                   key: react-url-api
-            - name: REACT_APP_KAKAO_MAPS_API_KEY
+            - name: KAKAO_MAPS_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: secret
-                  key: react-kakaomap-api
+                  key: kakaomap-api
           resources:
             requests:
               memory: 1Gi
