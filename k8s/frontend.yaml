@@ -26,6 +26,9 @@ spec:
                 secretKeyRef:
                   name: secret
                   key: react-kakaomap-api
+          resources:
+            requests:
+              memory: 1Gi
 ---
 apiVersion: v1
 kind: Service
